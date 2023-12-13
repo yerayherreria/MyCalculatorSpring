@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form class="form-horizontal" th:action="@{resol}" th:object="${elp}">
+		<fieldset>
+			<legend>Power Calculator</legend>
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="volt">Volt</label>
+				<div>
+					<input class="form-control input-md" id="number1" name="number1" th:field="*{volt}" type="number" placeholder="Introduce un numero">
+				</div>
+			</div>
+			<div class="form-group">
+					<label class="col-md-4 control-label" for="amp">Amp</label>
+					<div>
+						<input class="form-control input-md" id="number2" name="number2" th:field="*{amp}" type="number" placeholder="Introduce un numero">
+					</div>
+				</div>		
+
+				<button>Result</button><br>
+
+		<span th:text="${result}"></span>
+
+		</fieldset>
+
+	</form>
+</body>
+</html>
