@@ -2,8 +2,12 @@ package com.jacaranda.calculator.model;
 
 import java.util.Objects;
 
+import jakarta.validation.constraints.NotNull;
+
 public class ElectricalPower {
+	@NotNull
 	private int volt;
+	@NotNull
 	private int amp;
 	
 	public int getVolt() {

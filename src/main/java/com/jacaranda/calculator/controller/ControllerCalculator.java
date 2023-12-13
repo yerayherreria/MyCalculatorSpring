@@ -2,6 +2,8 @@ package com.jacaranda.calculator.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -44,16 +46,21 @@ public class ControllerCalculator {
 	}
 	
 	@GetMapping("/resol")
-	public String resol(Model model, @ModelAttribute("elp") ElectricalPower ep) throws Exception {
+	public String resol(@Validated Model model,@ModelAttribute("elp") ElectricalPower ep,BindingResult br) throws Exception {
 		ElectricalPower ep2 = new ElectricalPower();
 		model.addAttribute("elp",ep2);
+		
+		if(br.hasErrors()) {
+			model.addAttribute("result", "No se puede resolver");
+			return "electricalPower";
+		}
 		String result = "Electrical Power: "+ep.getVolt()+"*"+ep.getAmp()+"="+ep.getResult()+"W";
 		
 		model.addAttribute("result", result);
 		return "electricalPower";
 		
 	}
-	
+	/*
 	@GetMapping("/error")
 	public String error(Model model, @RequestParam("msg") String msg) {
 		model.addAttribute("msg", msg);
@@ -64,5 +71,5 @@ public class ControllerCalculator {
 	public String handleException(Exception e, HttpServletRequest request) {
 	    // Handle it
 	    return "error?msg="+ e.getMessage();
-	}
+	}*/
 }
