@@ -51,7 +51,6 @@ public class ControllerCalculator {
 		model.addAttribute("elp",ep2);
 		
 		if(br.hasErrors()) {
-			model.addAttribute("result", "No se puede resolver");
 			return "electricalPower";
 		}
 		String result = "Electrical Power: "+ep.getVolt()+"*"+ep.getAmp()+"="+ep.getResult()+"W";

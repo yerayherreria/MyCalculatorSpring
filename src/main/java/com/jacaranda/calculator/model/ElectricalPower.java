@@ -5,9 +5,9 @@ import java.util.Objects;
 import jakarta.validation.constraints.NotNull;
 
 public class ElectricalPower {
-	@NotNull
+	@NotNull(message="No puede ser nulo")
 	private int volt;
-	@NotNull
+	@NotNull(message="No puede ser nulo")
 	private int amp;
 	
 	public int getVolt() {
